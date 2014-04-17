@@ -29,7 +29,7 @@ help(read.table)  # see syntax, arguments, etc.
 # few rows and apply that to the entire file read.
 initial <- read.table("datatable.txt",nrows=100) # read a small amount of data
 classes <- sapply(initial,class) # generate a sequence of the derived classes
-tabAll <- read.table("datatabel.txt",colClasses=classes)  # apply that sequence to the full table
+tabAll <- read.table("datatabel.txt",colClasses=classes) # apply seq to full set
 
 #############################
 # Know your system
@@ -39,7 +39,8 @@ tabAll <- read.table("datatabel.txt",colClasses=classes)  # apply that sequence 
 # What other apps are in use?
 # What OS? 30-bit or 64-bit?
 
-# telling R how many rows there are enables it to preallocate the right amount of memory
+# telling R how many rows there are enables it to preallocate the right amount
+#    of memory
 # rows x # cols x size (8 B/numeric)
 # bytes / 220 b/MB / 1000 MB/GB = GB
 # compare to RAM
@@ -48,7 +49,7 @@ tabAll <- read.table("datatabel.txt",colClasses=classes)  # apply that sequence 
 # Textual formats
 #############################
 
-# dump and dput preserve the metadata so it doesn't have to be rediscovered later.
+# dump and dput preserve the metadata so no need for rediscovery later.
 # Useful for files stored in version control.
 # Editable. Corruption is easier to fix in text files
 # Text formats adhere to "Unix philosophy"
