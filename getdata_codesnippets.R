@@ -293,3 +293,36 @@ google <- handle("http://google.com")
 pg1 <- GET(handle=google,path="/")  # doesn't need auth, but shows related
 pg2 <- GET(handle=google,path="search")
 
+
+#############################
+# reading APIs
+#############################
+
+#####
+# Twitter
+#####
+# 1. log in at https://dev.twitter.com/
+# 2. go to https://dev.twitter.com/apps
+# 3. <Create a New App>
+# 4. register your app for later authentication
+#        Name: datasciencecourseraJYJ
+#        Descr: Course work for Coursera Data Science Specialization
+#        Website: https://class.coursera.org/getdata-002
+# 5. get info from API Keys tab
+# 6. create an access token (also on API Keys tab)
+# 7. create file with keys outside public GitHub
+#        filename: twitter_keys.R
+#        path: C:\Users\Skukkuk\Desktop\Class - Data Science
+#        content:
+#           Tkey          <- "<copied from webpage>"
+#           Tsecret       <- "<copied from webpage>"
+#           Ttoken        <- "<copied from webpage>"
+#           Ttoken_secret <- "<copied from webpage>"
+library(httr)
+source("C:\\Users\\Skukkuk\\Desktop\\Class - Data Science\\twitter_keys.R")
+myapp <- oauth_app("twitter",key=Tkey,secret=Tsecret)
+sig <- sign_oauth1.0(myapp,token=Ttoken,token_secret=Ttoken_secret)
+homeTL=GET("https://api.twitter.com/1.1/statuses/home_timeline.json",sig)
+homeTL  # see the resulting data
+
+# continue Reading From APIs at 02:18
