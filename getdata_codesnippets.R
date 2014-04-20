@@ -108,7 +108,7 @@ teams
 #############################
 # reading JSON
 #############################
-
+#install.packages("rjson")  # onetime only
 #install.packages("jsonlite")   # one time only
 library(jsonlite)
 jsonData <- fromJSON("https://api.github.com/users/JanaJensen/repos")
@@ -322,7 +322,12 @@ library(httr)
 source("C:\\Users\\Skukkuk\\Desktop\\Class - Data Science\\twitter_keys.R")
 myapp <- oauth_app("twitter",key=Tkey,secret=Tsecret)
 sig <- sign_oauth1.0(myapp,token=Ttoken,token_secret=Ttoken_secret)
-homeTL=GET("https://api.twitter.com/1.1/statuses/home_timeline.json",sig)
-homeTL  # see the resulting data
+# retrieve statuses from my home timeline
+homeTL <- GET("https://api.twitter.com/1.1/statuses/home_timeline.json",sig)
+homeTL  # see the resulting JSON data
+json1 <- content(homeTL) # recognize and interpret JSON
+library(jsonlite)
+json2 <- jsonlite::fromJSON(toJSON(json1)) # reformat as dataframe
+json2[1,1:4]  # extract data, most recent tweet in my timeline when pulled
 
-# continue Reading From APIs at 02:18
+# continue Reading From APIs at 05:52
