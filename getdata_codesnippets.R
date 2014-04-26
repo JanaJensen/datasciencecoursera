@@ -318,6 +318,8 @@ pg2 <- GET(handle=google,path="search")
 #           Tsecret       <- "<copied from webpage>"
 #           Ttoken        <- "<copied from webpage>"
 #           Ttoken_secret <- "<copied from webpage>"
+# 8. check Twitter source URLs:
+#        https://dev.twitter.com/docs/api/1.1/get/search/tweets
 library(httr)
 source("C:\\Users\\Skukkuk\\Desktop\\Class - Data Science\\twitter_keys.R")
 myapp <- oauth_app("twitter",key=Tkey,secret=Tsecret)
@@ -330,4 +332,29 @@ library(jsonlite)
 json2 <- jsonlite::fromJSON(toJSON(json1)) # reformat as dataframe
 json2[1,1:4]  # extract data, most recent tweet in my timeline when pulled
 
-# continue Reading From APIs at 05:52
+# check out httr demos on GitHub
+
+
+#############################
+# Other sources
+#############################
+
+#####
+# "foreign" package
+#####
+# loads data from Minitab, S, SAS, SPSS, Stat, Systat
+
+#####
+# images
+#####
+# see jpeg, png, readbitmap, etc. packages
+
+#####
+# GIS
+#####
+# rdgal, rgeos, raster packages
+
+#####
+# music
+#####
+# tuneR, seewave packages
