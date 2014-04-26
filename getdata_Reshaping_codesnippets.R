@@ -49,12 +49,9 @@ unlist(sprCount)  # combine results into a single vetor
 sapply(spIns,sum)
 ###
 # annother approach w/plyr  (this didn't actually work?)
-# per forum: ddply(dataframe, (colname1, colname2), function)
+# per forum: ddply(dataframe, c(colname1, colname2), function)
 ###
 # install.packages("dplyr")
 library(dplyr)
-ddply(InsectSprays,(spray,count),sum)
-# try again (still doesn't work)
-spraySums <- ddply(InsectSprays,.(spray),summarize,sum=ave(count,FUN=sum))
-dim(spraySums)
+ddply(InsectSprays,c(InsectSprays$spray,InsectSprays$count),sum)
 head(spraySums)
